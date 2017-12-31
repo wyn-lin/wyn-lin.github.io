@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言：本文讲述java中对象与类的一些概念。包括对象与类的有关概念，类间五种关系，类的访问权限等。 概述在java中，一切都可以用对象来描述，操作对象的标识符只不过是对象的一个引用，一个对象可以有多个引用，就像人可以有多个外号一样，但是一个这个外号不一定是真实存在这个人，可能以虚假的外号欺骗世人，引用亦如此，引用不一定需要有对象与之关联，一个引用倘若没有引用对象，那么这个引用就是null。而对于一">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java（第零篇）对象与类">
+<meta property="og:url" content="http://yoursite.com/2017/12/31/java-object-and-class/index.html">
+<meta property="og:site_name" content="wyn-lin小窝">
+<meta property="og:description" content="前言：本文讲述java中对象与类的一些概念。包括对象与类的有关概念，类间五种关系，类的访问权限等。 概述在java中，一切都可以用对象来描述，操作对象的标识符只不过是对象的一个引用，一个对象可以有多个引用，就像人可以有多个外号一样，但是一个这个外号不一定是真实存在这个人，可能以虚假的外号欺骗世人，引用亦如此，引用不一定需要有对象与之关联，一个引用倘若没有引用对象，那么这个引用就是null。而对于一">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-31T07:46:19.436Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java（第零篇）对象与类">
+<meta name="twitter:description" content="前言：本文讲述java中对象与类的一些概念。包括对象与类的有关概念，类间五种关系，类的访问权限等。 概述在java中，一切都可以用对象来描述，操作对象的标识符只不过是对象的一个引用，一个对象可以有多个引用，就像人可以有多个外号一样，但是一个这个外号不一定是真实存在这个人，可能以虚假的外号欺骗世人，引用亦如此，引用不一定需要有对象与之关联，一个引用倘若没有引用对象，那么这个引用就是null。而对于一">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/31/java-object-and-class/"/>
+
+
+
+
+
+  <title>java（第零篇）对象与类 | wyn-lin小窝</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wyn-lin小窝</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">加油</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/31/java-object-and-class/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wyn-lin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/-Ow-gP39kQfg/WXBnZGxioAI/AAAAAAAAACY/7lIbKb59ORUp2F7vCHd1wPaI7KeoXIybwCEwYBhgL/w140-h140-p/163575118bedfdccad302674bf0b799c.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wyn-lin小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">java（第零篇）对象与类</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-31T15:45:02+08:00">
+                2017-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>本文讲述java中对象与类的一些概念。包括对象与类的有关概念，类间五种关系，类的访问权限等。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在java中，一切都可以用对象来描述，操作对象的标识符只不过是对象的一个引用，一个对象可以有多个引用，就像人可以有多个外号一样，但是一个这个外号不一定是真实存在这个人，可能以虚假的外号欺骗世人，引用亦如此，引用不一定需要有对象与之关联，一个引用倘若没有引用对象，那么这个引用就是<strong>null</strong>。而对于一个真实存在的对象，如果没有一个引用引用它，那么很不幸的，它将在不久的将来被jvm的垃圾回收器发现并销毁。</p>
+<p>类是对象的一个模板和蓝图，通过类这个模板可以创建出多个相似的对象。</p>
+<h2 id="对象初始化的过程"><a href="#对象初始化的过程" class="headerlink" title="对象初始化的过程"></a>对象初始化的过程</h2><p>在Java中，对象的创建通过new 关键字动态分配内存创建一个对象，也可以通过反射在运行时创建一个对象。对象在创建时的初始化过程如下：</p>
+<p>首先,自顶向下找到类的顶层父类，如果该顶层父类是第一次加载，并且如果该类有静态初始化块，那么先执行顶层父类的静态初始化块初始化静态变量。然后，如果顶层父类有实例初始化块，那么先执行该初始化块再执行顶层父类构造方法。接着往下一层子类，同样的顺序进行初始化，直到轮到该对象自己的类，此时如果该对象的类第一次加载，如果有静态初始化块，那么先执行静态初始化块，然后如果该类有实例初始化块，就执行该初始化块，然后执行构造方法。</p>
+<p>另外，类的成员变量的赋值顺序是：在声明的地方赋值-&gt;初始化块赋值-&gt;构造方法赋值 </p>
+<p>类的静态变量赋值顺序：<br>在静态变量声明的地方赋值-&gt;静态初始化块赋值-&gt;构造方法赋值</p>
+<h2 id="类的构成"><a href="#类的构成" class="headerlink" title="类的构成"></a>类的构成</h2><p>类有方法和属性构成。属性例如商品的价格数量、人的性别年龄等。方法例如价格的税率计算等</p>
+<h2 id="类的访问权限"><a href="#类的访问权限" class="headerlink" title="类的访问权限"></a>类的访问权限</h2><p>类的访问权限有以下几种：</p>
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>同一个类</th>
+<th>同一个包</th>
+<th>同一个包的子类</th>
+<th>不同包的子类</th>
+<th>不同包中的类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>private (私有)</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>default (默认)</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>protected (保护)</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+</tr>
+<tr>
+<td>public (公有)</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody>
+</table>
+<h2 id="类重用"><a href="#类重用" class="headerlink" title="类重用"></a>类重用</h2><p>类重用的方式主要是通过类间的继承关系和聚合组合关系实现的。</p>
+<p>关于类的两种重用方式的区别与特点将在下篇文章总结。</p>
+<h2 id="关于类之间的关系"><a href="#关于类之间的关系" class="headerlink" title="关于类之间的关系"></a>关于类之间的关系</h2><p>类之间的关系主要有五种：</p>
+<ul>
+<li>依赖(use-a)</li>
+<li>关联(association)</li>
+<li>聚合(has-a)</li>
+<li>组合(contain-a)</li>
+<li>继承(is-a)</li>
+</ul>
+<h3 id="1-依赖关系是一种use-a的关系。"><a href="#1-依赖关系是一种use-a的关系。" class="headerlink" title="1. 依赖关系是一种use-a的关系。"></a>1. 依赖关系是一种use-a的关系。</h3><p>一般而言，一个类A如果操作另一个类B的对象来实现某些功能，我们就称为A依赖于B。</p>
+<blockquote>
+<p>表现为：方法参数传入另一个类的实例对象，静态方法的调用，在代码块和方法中定义的另一个类类型的局部变量等。</p>
+<p>这种依赖关系是弱依赖，具有偶然性，并不是长期依赖，是在局部作用域内使用了另一个类的实例或者使用了另一个类的静态方法时。当调用类的方法时，才出现依赖关系</p>
+</blockquote>
+<p>代码实例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="comment">//1. 参数形式</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">useOne</span><span class="params">(B b)</span></span>&#123;</span><br><span class="line">        b.showB();<span class="comment">//使用b做一些事情</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">useTwo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//2. 局部变量形式</span></span><br><span class="line">        <span class="keyword">new</span> B().showB();</span><br><span class="line">        <span class="comment">//3. 静态方法形式</span></span><br><span class="line">        B.bb();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showB</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"b hello world!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bb</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"B static hello world!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-关联关系是指在一个类中与另一个类有联系。"><a href="#2-关联关系是指在一个类中与另一个类有联系。" class="headerlink" title="2. 关联关系是指在一个类中与另一个类有联系。"></a>2. 关联关系是指在一个类中与另一个类有联系。</h3><blockquote>
+<p>表现为成员变量的使用</p>
+</blockquote>
+<p>关联关系分两种：<strong>单向关联</strong>和<strong>双向关联</strong>。</p>
+<p>顾名思义，单向关联是指仅有一方关联了另一方，而双向关联指的是双方互相存在关联。</p>
+<p>代码示例：</p>
+<ul>
+<li><p>单向关联</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> B b = <span class="keyword">new</span> B();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">useB</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//使用b做一些事情</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>双向关联</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> B b = <span class="keyword">new</span> B();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">useB</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//使用b做一些事情</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> A a = <span class="keyword">new</span> A();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">useA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//使用a做一些事情</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>另外根据关联的对象的数量又可分为以下几种的关联：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>表示方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1..1</td>
+<td>表示一个类的一个对象只与另一个类的一个对象有关联</td>
+</tr>
+<tr>
+<td>1..*</td>
+<td>表示一个类的一个对象与另一个类的一个或多个对象有关联</td>
+</tr>
+<tr>
+<td>0..*</td>
+<td>表示一个类的一个对象与另一个类的零个或多个对象有关联</td>
+</tr>
+<tr>
+<td>0..1</td>
+<td>表示一个类的一个对象与另一个类的零个或一个对象有关联</td>
+</tr>
+<tr>
+<td>m..n</td>
+<td>表示一个类的一个对象与另一个类的m个到n个对象有关联</td>
+</tr>
+</tbody>
+</table>
+<p>两个类之间虽然是存在联系，但是只是在结构上的联系，并没有要求在语义上有联系。两个类在生命周期上是平级关系，其中一个类的消失都不会促使另一个类的消亡，与下面讲述的聚合关系和组合关系有所不同。</p>
+<h3 id="3-聚合关系是一种has-a-的关系，是关联关系的一种特例"><a href="#3-聚合关系是一种has-a-的关系，是关联关系的一种特例" class="headerlink" title="3. 聚合关系是一种has-a 的关系，是关联关系的一种特例"></a>3. 聚合关系是一种has-a 的关系，是关联关系的一种特例</h3><p>表示一个类A 的一个对象拥有另一个类A 的实例。</p>
+<p>在java中，同样表示为成员变量的形式。但是与普通关联关系有所不同，聚合关系在语义上并不是平级关系，聚合关系的类A 与 类 B 是一种 A has-a B 的关系。而这个b 也可以是多个类共享。</p>
+<p>举栗子：<br>电脑与连接在电脑的打印机,电脑拥有一台打印机设备。这台打印机设备属于这台电脑，同时也可以属于其他共享这个打印机的电脑。</p>
+<h3 id="4-组合关系是一种contain-a的关系，也是关联关系的一种特例，区别同样在于语义"><a href="#4-组合关系是一种contain-a的关系，也是关联关系的一种特例，区别同样在于语义" class="headerlink" title="4. 组合关系是一种contain-a的关系，也是关联关系的一种特例，区别同样在于语义"></a>4. 组合关系是一种contain-a的关系，也是关联关系的一种特例，区别同样在于语义</h3><p>表示一个类A的一个对象包含另一个类B的一个实例对象。</p>
+<p>与聚合关系不同在于，聚合关系的a消亡并不会促使b消亡。而组合关系中a的消亡会导致b也跟着消亡，组合关系中a与b也是整体与部分的关系，但部分不能脱离整体而存在。</p>
+<p>举个栗子：<br>人和人的头就是组合关系。人一旦死去，头部也会随之消亡。而聚合关系中的例子打印机 可以单独存活于外，电脑死机了，打印机还是连接着其他电脑，但是人的头部恐怕以目前的技术很难接到其他本体吧。</p>
+<h3 id="5-继承关系也称泛化（generalization）"><a href="#5-继承关系也称泛化（generalization）" class="headerlink" title="5. 继承关系也称泛化（generalization）"></a>5. 继承关系也称泛化（generalization）</h3><p>表示一个子类继承了父类。在java中通过关键字extends 实现</p>
+<blockquote>
+<p>这五种关系的类之间的耦合度松紧程度为：组合&gt;聚合&gt;关联&gt;依赖</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><p><a href="https://www.jianshu.com/p/ee0c26bcbf3d" target="_blank" rel="noopener">https://www.jianshu.com/p/ee0c26bcbf3d</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/jiqing9006/p/5915023.html" target="_blank" rel="noopener">http://www.cnblogs.com/jiqing9006/p/5915023.html</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://lh3.googleusercontent.com/-Ow-gP39kQfg/WXBnZGxioAI/AAAAAAAAACY/7lIbKb59ORUp2F7vCHd1wPaI7KeoXIybwCEwYBhgL/w140-h140-p/163575118bedfdccad302674bf0b799c.jpg"
+                alt="wyn-lin" />
+            
+              <p class="site-author-name" itemprop="name">wyn-lin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+              <div class="links-of-author motion-element">
+    
+</div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wyn-lin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:god.wynford@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象初始化的过程"><span class="nav-number">3.</span> <span class="nav-text">对象初始化的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的构成"><span class="nav-number">4.</span> <span class="nav-text">类的构成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的访问权限"><span class="nav-number">5.</span> <span class="nav-text">类的访问权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类重用"><span class="nav-number">6.</span> <span class="nav-text">类重用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于类之间的关系"><span class="nav-number">7.</span> <span class="nav-text">关于类之间的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-依赖关系是一种use-a的关系。"><span class="nav-number">7.1.</span> <span class="nav-text">1. 依赖关系是一种use-a的关系。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-关联关系是指在一个类中与另一个类有联系。"><span class="nav-number">7.2.</span> <span class="nav-text">2. 关联关系是指在一个类中与另一个类有联系。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-聚合关系是一种has-a-的关系，是关联关系的一种特例"><span class="nav-number">7.3.</span> <span class="nav-text">3. 聚合关系是一种has-a 的关系，是关联关系的一种特例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-组合关系是一种contain-a的关系，也是关联关系的一种特例，区别同样在于语义"><span class="nav-number">7.4.</span> <span class="nav-text">4. 组合关系是一种contain-a的关系，也是关联关系的一种特例，区别同样在于语义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-继承关系也称泛化（generalization）"><span class="nav-number">7.5.</span> <span class="nav-text">5. 继承关系也称泛化（generalization）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wyn-lin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+</body>
+</html>
