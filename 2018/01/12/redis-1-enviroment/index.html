@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="redis," />
 
 
 
@@ -79,13 +79,26 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="wyn-lin小窝">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta name="description" content="本文讲述如何安装redis，分Linux环境和Windows环境。Linux采用的演示系统是centos 7.4 ,windows 采用的是win10 下载 linux ：  随便找一个目录执行以下命令,版本号自主选择1wget http://download.redis.io/releases/redis-4.0.6.tar.gz  windows:  redis 项目暂时还没支持Windows">
+<meta name="keywords" content="redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis(一)环境搭建">
+<meta property="og:url" content="http://yoursite.com/2018/01/12/redis-1-enviroment/index.html">
 <meta property="og:site_name" content="wyn-lin小窝">
+<meta property="og:description" content="本文讲述如何安装redis，分Linux环境和Windows环境。Linux采用的演示系统是centos 7.4 ,windows 采用的是win10 下载 linux ：  随便找一个目录执行以下命令,版本号自主选择1wget http://download.redis.io/releases/redis-4.0.6.tar.gz  windows:  redis 项目暂时还没支持Windows">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://omylylsek.bkt.clouddn.com/redis-enviroment-1.jpg?attname=&e=1515751570&token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:URqgiOvbRBsIbwCoCZHgbRe2Ynk">
+<meta property="og:image" content="http://omylylsek.bkt.clouddn.com/redis-enviroment-2.jpg?attname=&e=1515753144&token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:nxgUOu1mjPUK_prCoKe4uQEhXiQ">
+<meta property="og:image" content="http://omylylsek.bkt.clouddn.com/redis-enviroment-5.jpg?attname=&e=1515754451&token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:z_ms2ZVGj71um7opo9eXWhKr-bQ">
+<meta property="og:image" content="http://omylylsek.bkt.clouddn.com/redis-enviroment-6.jpg?attname=&e=1515755097&token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:JenuXBbcB0rB_RMIf1R8yWzwyeM">
+<meta property="og:image" content="http://omylylsek.bkt.clouddn.com/redis-enviroment-3.jpg?attname=&e=1515753399&token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:wz_T0DBkuhlaR3dCOPzN1DlM_tM">
+<meta property="og:image" content="http://omylylsek.bkt.clouddn.com/redis-enviroment-4.jpg?attname=&e=1515753664&token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:R1a2NtBfHguKM3N-Vhs-VDQXegs">
+<meta property="og:image" content="http://omylylsek.bkt.clouddn.com/redis-enviroment-7.png?attname=&e=1515919984&token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:AKBhm5dJ6REvLl7afhTTOFCybTk">
+<meta property="og:updated_time" content="2018-01-14T08:10:41.536Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wyn-lin小窝">
+<meta name="twitter:title" content="redis(一)环境搭建">
+<meta name="twitter:description" content="本文讲述如何安装redis，分Linux环境和Windows环境。Linux采用的演示系统是centos 7.4 ,windows 采用的是win10 下载 linux ：  随便找一个目录执行以下命令,版本号自主选择1wget http://download.redis.io/releases/redis-4.0.6.tar.gz  windows:  redis 项目暂时还没支持Windows">
+<meta name="twitter:image" content="http://omylylsek.bkt.clouddn.com/redis-enviroment-1.jpg?attname=&e=1515751570&token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:URqgiOvbRBsIbwCoCZHgbRe2Ynk">
 
 
 
@@ -115,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/12/redis-1-enviroment/"/>
 
 
 
 
 
-  <title>归档 | wyn-lin小窝</title>
+  <title>redis(一)环境搭建 | wyn-lin小窝</title>
   
 
 
@@ -140,7 +153,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,264 +291,217 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/redis-1-enviroment/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wyn-lin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/-Ow-gP39kQfg/WXBnZGxioAI/AAAAAAAAACY/7lIbKb59ORUp2F7vCHd1wPaI7KeoXIybwCEwYBhgL/w140-h140-p/163575118bedfdccad302674bf0b799c.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wyn-lin小窝">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">redis(一)环境搭建</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T18:12:34+08:00">
+                2018-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 6 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/16/java-stream/" itemprop="url">
-              
-                <span itemprop="name">java基础（第二篇）IO流</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-16T12:39:16+08:00"
-              content="2018-01-16" >
-          01-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/13/redis-3-spring-interates-redis/" itemprop="url">
-              
-                <span itemprop="name">redis(三)spring data redis实现缓存功能</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-13T22:11:29+08:00"
-              content="2018-01-13" >
-          01-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/13/redis-2-use-jedis/" itemprop="url">
-              
-                <span itemprop="name">redis(二)redis概述与jedis的使用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-13T21:50:51+08:00"
-              content="2018-01-13" >
-          01-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/12/redis-1-enviroment/" itemprop="url">
-              
-                <span itemprop="name">redis(一)环境搭建</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-12T18:12:34+08:00"
-              content="2018-01-12" >
-          01-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/01/java-inheritance-and-compositon/" itemprop="url">
-              
-                <span itemprop="name">java基础（第一篇）继承和组合</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-01T00:44:39+08:00"
-              content="2018-01-01" >
-          01-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/31/java-object-and-class/" itemprop="url">
-              
-                <span itemprop="name">java基础（第零篇）对象与类</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-31T15:45:02+08:00"
-              content="2017-12-31" >
-          12-31
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <p>本文讲述如何安装redis，分Linux环境和Windows环境。Linux采用的演示系统是centos 7.4 ,windows 采用的是win10</p>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><blockquote>
+<p>linux ：</p>
+</blockquote>
+<p>随便找一个目录执行以下命令,版本号自主选择<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-4.0.6.tar.gz</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>windows:</p>
+</blockquote>
+<p>redis 项目暂时还没支持Windows，但是微软的Open Tech group 开发了Windows版本，但是并没有同步更新，可以在下面这个地址<a href="https://github.com/MicrosoftArchive/redis/releases" target="_blank" rel="noopener"> https://github.com/MicrosoftArchive/redis/releases </a>中选择下载，一般使用redis 都是在Linux环境下。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><blockquote>
+<p>linux </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1. 解压</span><br><span class="line">tar -zxvf redis-4.0.6.tar.gz</span><br><span class="line">2. 移动到合适目录</span><br><span class="line">mv redis-4.0.6 /opt/upzip/</span><br><span class="line">3. 进入redis目录</span><br><span class="line">cd /opt/upzip/redis-4.0.6</span><br><span class="line">4. 编译 redis</span><br><span class="line">make </span><br><span class="line">5. 安装 redis,prefix 指定安装目录</span><br><span class="line">make install PREFIX=/usr/local/redis</span><br></pre></td></tr></table></figure>
+<p>执行 cd /usr/local/redis/bin命令进入bin目录下执行ls命令可以看到</p>
+<p><img src="http://omylylsek.bkt.clouddn.com/redis-enviroment-1.jpg?attname=&amp;e=1515751570&amp;token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:URqgiOvbRBsIbwCoCZHgbRe2Ynk" alt="image"></p>
+<p>说明安装成功了，在当前目录下执行如下命令可启动redis服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server /opt/upzip/redis-4.0.6/redis.conf</span><br></pre></td></tr></table></figure>
+<p>但是如果想要启动后可以后台运行。需执行以下操作。</p>
+<p>1.将之前解压之后的redis目录下的redis.conf 拷贝到安装目录bin之下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /opt/upzip/redis-4.0.6/redis.conf /usr/local/redis/bin/</span><br></pre></td></tr></table></figure></p>
+<p>2.打开/usr/local/redis/bin/redis.conf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/local/redis/bin/redis.conf</span><br></pre></td></tr></table></figure></p>
+<p>3.修改redis.conf 中的daemonize为yes<br><img src="http://omylylsek.bkt.clouddn.com/redis-enviroment-2.jpg?attname=&amp;e=1515753144&amp;token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:nxgUOu1mjPUK_prCoKe4uQEhXiQ" alt="image"><br>4.重新启动redis-server<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server redis.conf</span><br></pre></td></tr></table></figure></p>
+<p>5.开启6379端口（在服务器中如果有开启防火墙才需此步）</p>
+<blockquote>
+<p>这里centos7 防火墙使用的是自带的firewalld。</p>
+</blockquote>
+<p>第一步：添加端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=6379/tcp --permanent</span><br></pre></td></tr></table></figure></p>
+<p>这里<strong>zone</strong>是作用域； <strong>6379</strong> 是端口号，<strong>tcp</strong> 代表允许建立tcp 连接，对应的还有udp ；<strong>permanent</strong> 是指永久有效，在服务器重启之后配置也同样生效；需要重启firewalld 才会使端口生效</p>
+<p>第二步:重启firewalld<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart firewalld</span><br></pre></td></tr></table></figure></p>
+<p>第三步:查看端口是否添加生效：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --list-ports</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://omylylsek.bkt.clouddn.com/redis-enviroment-5.jpg?attname=&amp;e=1515754451&amp;token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:z_ms2ZVGj71um7opo9eXWhKr-bQ" alt="image"></p>
+<p>6.修改密码（为了安全起见需要修改一下密码)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/local/redis/bin/redis.conf</span><br></pre></td></tr></table></figure></p>
+<p>找到如下requirepass 右边就是密码了，这里打码了。<br><img src="http://omylylsek.bkt.clouddn.com/redis-enviroment-6.jpg?attname=&amp;e=1515755097&amp;token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:JenuXBbcB0rB_RMIf1R8yWzwyeM" alt="image"></p>
+<blockquote>
+<p>windows </p>
+</blockquote>
+<p>windows 安装没什么好讲的，选择绿色版解压即可，解压之后目录下包括这些文件,配置和命令和Linux一样</p>
+<p><img src="http://omylylsek.bkt.clouddn.com/redis-enviroment-3.jpg?attname=&amp;e=1515753399&amp;token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:wz_T0DBkuhlaR3dCOPzN1DlM_tM" alt="image"></p>
+<p>启动redis </p>
+<p><img src="http://omylylsek.bkt.clouddn.com/redis-enviroment-4.jpg?attname=&amp;e=1515753664&amp;token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:R1a2NtBfHguKM3N-Vhs-VDQXegs" alt="image"></p>
+<blockquote>
+<p>另外，可以添加到环境变量中，这样就可以不用每次使用redis-server 和redis-cli 都切换到该目录下</p>
+</blockquote>
+<h3 id="关闭redis-server-的方法"><a href="#关闭redis-server-的方法" class="headerlink" title="关闭redis-server 的方法"></a>关闭redis-server 的方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli shutdown</span><br></pre></td></tr></table></figure>
+<h3 id="redis-cli"><a href="#redis-cli" class="headerlink" title="redis-cli"></a>redis-cli</h3><p>redis-cli 常用命令如下<br><img src="http://omylylsek.bkt.clouddn.com/redis-enviroment-7.png?attname=&amp;e=1515919984&amp;token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:AKBhm5dJ6REvLl7afhTTOFCybTk" alt="image"></p>
+<h3 id="redis-图形客户端"><a href="#redis-图形客户端" class="headerlink" title="redis 图形客户端"></a>redis 图形客户端</h3><p>网上有很多，因人使用习惯而异，推荐 <strong>RedisDesktopManager</strong> <a href="https://github.com/uglide/RedisDesktopManager" target="_blank" rel="noopener">[传送门]</a> </p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/redis/" rel="tag"># redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/01/java-inheritance-and-compositon/" rel="next" title="java基础（第一篇）继承和组合">
+                <i class="fa fa-chevron-left"></i> java基础（第一篇）继承和组合
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/13/redis-2-use-jedis/" rel="prev" title="redis(二)redis概述与jedis的使用">
+                redis(二)redis概述与jedis的使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -543,6 +509,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -563,8 +533,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -631,6 +610,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载"><span class="nav-number">1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭redis-server-的方法"><span class="nav-number">3.</span> <span class="nav-text">关闭redis-server 的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis-cli"><span class="nav-number">4.</span> <span class="nav-text">redis-cli</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis-图形客户端"><span class="nav-number">5.</span> <span class="nav-text">redis 图形客户端</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -781,6 +776,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 

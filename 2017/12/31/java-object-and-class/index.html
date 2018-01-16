@@ -82,15 +82,15 @@
 <meta name="description" content="前言：本文讲述java中对象与类的一些概念。包括对象与类的有关概念，类间五种关系，类的访问权限等。  在java中，一切都可以用对象来描述，操作对象的标识符只不过是对象的一个引用，一个对象可以有多个引用，就像人可以有多个外号一样，但是这个外号不一定是真实存在这个人，可能以虚假的外号欺骗世人，引用亦如此，引用不一定需要有对象与之关联，一个引用倘若没有引用对象，那么这个引用就是null。而对于一个真实">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java（第零篇）对象与类">
+<meta property="og:title" content="java基础（第零篇）对象与类">
 <meta property="og:url" content="http://yoursite.com/2017/12/31/java-object-and-class/index.html">
 <meta property="og:site_name" content="wyn-lin小窝">
 <meta property="og:description" content="前言：本文讲述java中对象与类的一些概念。包括对象与类的有关概念，类间五种关系，类的访问权限等。  在java中，一切都可以用对象来描述，操作对象的标识符只不过是对象的一个引用，一个对象可以有多个引用，就像人可以有多个外号一样，但是这个外号不一定是真实存在这个人，可能以虚假的外号欺骗世人，引用亦如此，引用不一定需要有对象与之关联，一个引用倘若没有引用对象，那么这个引用就是null。而对于一个真实">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://omylylsek.bkt.clouddn.com/java-object-and-class.jpg?attname=&e=1514779787&token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:IGcnsdUhhSDvcbTYvDJOWAit3Lk">
-<meta property="og:updated_time" content="2018-01-02T12:18:07.536Z">
+<meta property="og:updated_time" content="2018-01-03T01:26:12.362Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java（第零篇）对象与类">
+<meta name="twitter:title" content="java基础（第零篇）对象与类">
 <meta name="twitter:description" content="前言：本文讲述java中对象与类的一些概念。包括对象与类的有关概念，类间五种关系，类的访问权限等。  在java中，一切都可以用对象来描述，操作对象的标识符只不过是对象的一个引用，一个对象可以有多个引用，就像人可以有多个外号一样，但是这个外号不一定是真实存在这个人，可能以虚假的外号欺骗世人，引用亦如此，引用不一定需要有对象与之关联，一个引用倘若没有引用对象，那么这个引用就是null。而对于一个真实">
 <meta name="twitter:image" content="http://omylylsek.bkt.clouddn.com/java-object-and-class.jpg?attname=&e=1514779787&token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:IGcnsdUhhSDvcbTYvDJOWAit3Lk">
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>java（第零篇）对象与类 | wyn-lin小窝</title>
+  <title>java基础（第零篇）对象与类 | wyn-lin小窝</title>
   
 
 
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java（第零篇）对象与类</h1>
+          <h1 class="post-title" itemprop="name headline">java基础（第零篇）对象与类</h1>
         
 
         <div class="post-meta">
@@ -416,50 +416,50 @@
 <thead>
 <tr>
 <th>权限</th>
-<th>同一个类</th>
-<th>同一个包</th>
-<th>同一个包的子类</th>
-<th>不同包的子类</th>
-<th>不同包中的类</th>
+<th style="text-align:center">同一个类</th>
+<th style="text-align:center">同一个包</th>
+<th style="text-align:center">同一个包的子类</th>
+<th style="text-align:center">不同包的子类</th>
+<th style="text-align:center">不同包中的类</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>private (私有)</td>
-<td>√</td>
-<td>×</td>
-<td>×</td>
-<td>×</td>
-<td>×</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
 </tr>
 <tr>
 <td>default (默认)</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td>×</td>
-<td>×</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
 </tr>
 <tr>
 <td>protected (保护)</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td>×</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">×</td>
 </tr>
 <tr>
 <td>public (公有)</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td>√ </td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√ </td>
 </tr>
 </tbody>
 </table>
 <h2 id="类重用"><a href="#类重用" class="headerlink" title="类重用"></a>类重用</h2><p>类重用的方式主要是通过类间的继承关系和聚合组合关系实现的。</p>
-<p>关于类的两种重用方式的区别与特点将在下篇文章总结。</p>
+<p>关于类的两种重用方式的区别与特点将在下篇文章<a href="http://localhost:4001/2018/01/03/java-inherit-and-compositon/" target="_blank" rel="noopener">《java基础(第一篇)继承与组合》</a>总结。</p>
 <h2 id="关于类之间的关系"><a href="#关于类之间的关系" class="headerlink" title="关于类之间的关系"></a>关于类之间的关系</h2><p>类之间的关系主要有五种：</p>
 <ul>
 <li>依赖(use-a)</li>
@@ -578,8 +578,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/03/java-inherit-and-compositon/" rel="prev" title="java基础(第一篇)继承和组合">
-                java基础(第一篇)继承和组合 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/01/java-inheritance-and-compositon/" rel="prev" title="java基础（第一篇）继承和组合">
+                java基础（第一篇）继承和组合 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -661,7 +661,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -672,7 +672,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -683,7 +683,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

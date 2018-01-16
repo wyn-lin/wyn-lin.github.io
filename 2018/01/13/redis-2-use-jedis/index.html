@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="redis," />
 
 
 
@@ -79,13 +79,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="wyn-lin小窝">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta name="description" content="redis是一个高性能的、支持网络、可基于内存的key-value存储机制的NoSQL数据库。基于内存的特性使得redis有非比寻常的性能优势。 关于redis的数据结构作为key-value的数据库，redis存储的数据类型不止数值类型和字符串类型，还包括以下几种数据类型： hash类型 hash类型是一种散列类型，和java中的hashMap很像，存储的值可以包括多个不重复字段，例如一个Use">
+<meta name="keywords" content="redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis(二)redis概述与jedis的使用">
+<meta property="og:url" content="http://yoursite.com/2018/01/13/redis-2-use-jedis/index.html">
 <meta property="og:site_name" content="wyn-lin小窝">
+<meta property="og:description" content="redis是一个高性能的、支持网络、可基于内存的key-value存储机制的NoSQL数据库。基于内存的特性使得redis有非比寻常的性能优势。 关于redis的数据结构作为key-value的数据库，redis存储的数据类型不止数值类型和字符串类型，还包括以下几种数据类型： hash类型 hash类型是一种散列类型，和java中的hashMap很像，存储的值可以包括多个不重复字段，例如一个Use">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://omylylsek.bkt.clouddn.com/redis-enviroment-7.png?attname=&e=1515919984&token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:AKBhm5dJ6REvLl7afhTTOFCybTk">
+<meta property="og:updated_time" content="2018-01-14T15:31:09.822Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wyn-lin小窝">
+<meta name="twitter:title" content="redis(二)redis概述与jedis的使用">
+<meta name="twitter:description" content="redis是一个高性能的、支持网络、可基于内存的key-value存储机制的NoSQL数据库。基于内存的特性使得redis有非比寻常的性能优势。 关于redis的数据结构作为key-value的数据库，redis存储的数据类型不止数值类型和字符串类型，还包括以下几种数据类型： hash类型 hash类型是一种散列类型，和java中的hashMap很像，存储的值可以包括多个不重复字段，例如一个Use">
+<meta name="twitter:image" content="http://omylylsek.bkt.clouddn.com/redis-enviroment-7.png?attname=&e=1515919984&token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:AKBhm5dJ6REvLl7afhTTOFCybTk">
 
 
 
@@ -115,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/13/redis-2-use-jedis/"/>
 
 
 
 
 
-  <title>归档 | wyn-lin小窝</title>
+  <title>redis(二)redis概述与jedis的使用 | wyn-lin小窝</title>
   
 
 
@@ -140,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,264 +285,190 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/redis-2-use-jedis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wyn-lin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://lh3.googleusercontent.com/-Ow-gP39kQfg/WXBnZGxioAI/AAAAAAAAACY/7lIbKb59ORUp2F7vCHd1wPaI7KeoXIybwCEwYBhgL/w140-h140-p/163575118bedfdccad302674bf0b799c.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wyn-lin小窝">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">redis(二)redis概述与jedis的使用</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T21:50:51+08:00">
+                2018-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 6 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/16/java-stream/" itemprop="url">
-              
-                <span itemprop="name">java基础（第二篇）IO流</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-16T12:39:16+08:00"
-              content="2018-01-16" >
-          01-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/13/redis-3-spring-interates-redis/" itemprop="url">
-              
-                <span itemprop="name">redis(三)spring data redis实现缓存功能</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-13T22:11:29+08:00"
-              content="2018-01-13" >
-          01-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/13/redis-2-use-jedis/" itemprop="url">
-              
-                <span itemprop="name">redis(二)redis概述与jedis的使用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-13T21:50:51+08:00"
-              content="2018-01-13" >
-          01-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/12/redis-1-enviroment/" itemprop="url">
-              
-                <span itemprop="name">redis(一)环境搭建</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-12T18:12:34+08:00"
-              content="2018-01-12" >
-          01-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/01/java-inheritance-and-compositon/" itemprop="url">
-              
-                <span itemprop="name">java基础（第一篇）继承和组合</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-01T00:44:39+08:00"
-              content="2018-01-01" >
-          01-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/31/java-object-and-class/" itemprop="url">
-              
-                <span itemprop="name">java基础（第零篇）对象与类</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-31T15:45:02+08:00"
-              content="2017-12-31" >
-          12-31
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <p>redis是一个高性能的、支持网络、可基于内存的key-value存储机制的NoSQL数据库。基于内存的特性使得redis有非比寻常的性能优势。</p>
+<h2 id="关于redis的数据结构"><a href="#关于redis的数据结构" class="headerlink" title="关于redis的数据结构"></a>关于redis的数据结构</h2><p>作为key-value的数据库，redis存储的数据类型不止数值类型和字符串类型，还包括以下几种数据类型：</p>
+<h3 id="hash类型"><a href="#hash类型" class="headerlink" title="hash类型"></a>hash类型</h3><blockquote>
+<p>hash类型是一种散列类型，和java中的hashMap很像，存储的值可以包括多个不重复字段，例如一个User对象的name和age都可以作为hash类型的一个字段，相对于将每个字段单独存储为String类型，hash类型更节省内存，因为redis的hash是用zipMap来存储的，并不是hashTable, zipmap 相比正常的 hash实现可以节省不少hash本身需要的一些存储开销,虽然这样使得hash的属性的添加、删除和查找的时间复杂度为O(n),但是一般用hash类型存储对象，而对象的属性一般不会太多，因此平均时间复杂度接近于O(1)，并且，当field或value的大小超过一定大小时，redis会将hash类型从zipMap转换成正常的hash实现，这个限制可以在配置文件中如下指定</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hash-max-zipmap-entries 64 #配置字段最多 64 个</span><br><span class="line">hash-max-zipmap-value 512 #配置 value 最大为 512 字节</span><br></pre></td></tr></table></figure>
+<h3 id="list类型"><a href="#list类型" class="headerlink" title="list类型"></a>list类型</h3><blockquote>
+<p>list类型是一种有序的列表类型，实现是用双向链表实现的。主要的功能有push、pop、获取列表中某个范围的元素等，存储的值都是string类型，list因为是双向链表结构，可以作为栈和队列使用。</p>
+</blockquote>
+<h3 id="set类型"><a href="#set类型" class="headerlink" title="set类型"></a>set类型</h3><blockquote>
+<p>set 类型是一种集合类型，它是无序的不可重复的，set是通过hashTable实现的，因而增删查找的复杂度都是O(1),set的操作包括set类型的交并补。</p>
+</blockquote>
+<h3 id="sortedSet类型"><a href="#sortedSet类型" class="headerlink" title="sortedSet类型"></a>sortedSet类型</h3><blockquote>
+<p>sortedSet是一种有序的Set类型，通过指定一个Score属性作为排序的域，这个域的值可以修改，每次指定score值后，sortedSet会对元素进行排序，因此插入的效率低于set，包括的功能和set类型相似，sortedSet最经常的使用方式应该是作为索引来使用.我们可以把要排序的字段作为score 存储，对象的id当元素存储。</p>
+</blockquote>
+<h2 id="jedis-介绍"><a href="#jedis-介绍" class="headerlink" title="jedis 介绍"></a>jedis 介绍</h2><p>jedis是一个用java写的redis数据库操作的客户端，通过jedis，可以很方便的对redis数据库进行操作，jedis的api的学习成本也很低，源码很简单，有时间的同学可以看一下源码，jedis很多对数据库的操作的方法名都是和redis-cli的API一致，关于redis-cli的API ，常用的有以下：<br><img src="http://omylylsek.bkt.clouddn.com/redis-enviroment-7.png?attname=&amp;e=1515919984&amp;token=59vcTaqzSh2jbmTsZ7AzZoKKMif7QwNrmoLva05-:AKBhm5dJ6REvLl7afhTTOFCybTk" alt="image"></p>
+<p>简单代码演示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void useJedis()&#123;</span><br><span class="line">    //创建jedis对象</span><br><span class="line">    Jedis jedis = new Jedis(&quot;127.0.0.1&quot;,6379,5000);</span><br><span class="line">    //认证密码，如果没有密码不需要此步</span><br><span class="line">    jedis.auth(&quot;password&quot;);</span><br><span class="line">    //选择数据库序号</span><br><span class="line">    jedis.select(1);</span><br><span class="line">    //存值</span><br><span class="line">    jedis.set(&quot;testStringKey&quot;,&quot;Hello Redis!&quot;);</span><br><span class="line">    jedis.hset(&quot;testHashKey&quot;,&quot;msg&quot;,&quot;Hello Redis too!&quot;);</span><br><span class="line"></span><br><span class="line">    //取值</span><br><span class="line">    System.out.println(jedis.get(&quot;testStringKey&quot;));</span><br><span class="line">    System.out.println(jedis.hget(&quot;testHashKey&quot;,&quot;msg&quot;));</span><br><span class="line"></span><br><span class="line">    jedis.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 使用连接池</span><br><span class="line"> */</span><br><span class="line">@Test</span><br><span class="line">public void useRedisPool()&#123;</span><br><span class="line">    JedisPoolConfig config = new JedisPoolConfig();</span><br><span class="line">    //设置最大十个连接，具体编程需要根据情况配置</span><br><span class="line">    config.setMaxTotal(10);</span><br><span class="line">    JedisPool jedisPool = new JedisPool(config,&quot;127.0.0.1&quot;,</span><br><span class="line">            6379,5000,&quot;password&quot;);</span><br><span class="line">    Jedis jedis = jedisPool.getResource();</span><br><span class="line"></span><br><span class="line">    //存值</span><br><span class="line">    jedis.set(&quot;testStringKey&quot;,&quot;Hello Redis!&quot;);</span><br><span class="line">    jedis.hset(&quot;testHashKey&quot;,&quot;msg&quot;,&quot;Hello Redis too!&quot;);</span><br><span class="line"></span><br><span class="line">    //取值</span><br><span class="line">    System.out.println(jedis.get(&quot;testStringKey&quot;));</span><br><span class="line">    System.out.println(jedis.hget(&quot;testHashKey&quot;,&quot;msg&quot;));</span><br><span class="line">    /**</span><br><span class="line">     * 关闭资源，使用连接池的时候，jedis.close方法对资源的处理并不是释放，而是归还连接池</span><br><span class="line">     */</span><br><span class="line">    jedis.close();</span><br><span class="line">    jedisPool.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>更详细的jedis的API介绍移步<a href="http://www.javadoc.io/doc/redis.clients/jedis/2.9.0" target="_blank" rel="noopener">jedis-2.9-doc</a></p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/redis/" rel="tag"># redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/12/redis-1-enviroment/" rel="next" title="redis(一)环境搭建">
+                <i class="fa fa-chevron-left"></i> redis(一)环境搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/13/redis-3-spring-interates-redis/" rel="prev" title="redis(三)spring data redis实现缓存功能">
+                redis(三)spring data redis实现缓存功能 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -543,6 +476,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -563,8 +500,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -631,6 +577,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于redis的数据结构"><span class="nav-number">1.</span> <span class="nav-text">关于redis的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hash类型"><span class="nav-number">1.1.</span> <span class="nav-text">hash类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#list类型"><span class="nav-number">1.2.</span> <span class="nav-text">list类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set类型"><span class="nav-number">1.3.</span> <span class="nav-text">set类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sortedSet类型"><span class="nav-number">1.4.</span> <span class="nav-text">sortedSet类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jedis-介绍"><span class="nav-number">2.</span> <span class="nav-text">jedis 介绍</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -781,6 +743,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
