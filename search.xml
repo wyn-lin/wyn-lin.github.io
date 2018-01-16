@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[java基础（第二篇）java内存模型与线程安全问题]]></title>
+    <url>%2F2018%2F01%2F16%2Fjava-memory-model-and-thread-safe%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[java基础（第二篇）IO流]]></title>
     <url>%2F2018%2F01%2F16%2Fjava-stream%2F</url>
     <content type="text"><![CDATA[流是什么java中，从某个来源到另一个目的地之间建立一条虚拟的管道，将要传输的内容（对象或者文件等）通过这条管道以字节序列的形式传输，内容就像水流一样从来源地流向目的地。这个来源地和目的地可以是文件，也可以是网络连接，甚至可以是内存块等。 java中使用抽象类InputStream 和OutputStream构成IO类的基础。通过它们的实现类，可以实现IO操作]]></content>
